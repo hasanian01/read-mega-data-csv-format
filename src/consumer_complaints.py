@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[19]:
+# In[51]:
 
 
 def rounds(a):   # round the number (if less than 0.5 >>> 0 , else +1)
@@ -19,7 +19,7 @@ def IsIn(Advanced_search,string,M):  # checking if the string is in the dictiona
         try: 
             ID=M[string]
         except:
-            ID=0  
+            ID=-1  
     else:
         pass #   dump the code for advanced search here
     
@@ -35,10 +35,10 @@ def search(string,D):   # D is the indicator referring to type of the string
      # if Advanced=True: names could be written slightly differently in files (phili, PHILI, PhIlI) 
     [ID,Sout]=IsIn(Advanced_search,string,M)
             
-    if ID==0: 
+    if ID==-1: 
         ln=len(M)
-        M[Sout]=ln
-        ID=ln
+        ID=ln+1
+        M[Sout]=ID # we assume IDs begin from 1, so the first ID is 1
         if D=='product': PIDs=M
         if D=='company': CIDs=M
     return ID
@@ -160,7 +160,7 @@ def process(String):  # this processes the last chunk of data
 def calculate():
     global OUTPUT
     
-    for ID in range(len(OUTPUT)):
+    for ID in list(OUTPUT.keys()):
         Years=list(OUTPUT[ID].year.keys())
         for y in Years:
             Comps=OUTPUT[ID].year[y].comp
@@ -259,7 +259,7 @@ def write_report(OUTPUT,output_filename):
     F.close()  
 
 
-# In[20]:
+# In[55]:
 
 
 #    main code    # 
@@ -270,7 +270,7 @@ Advanced_search=False   # is true, we assume that the names can slightly vary (f
 ###############################################################
 import sys
 
-run_bash=True
+run_bash=False
 
 if not run_bash:
     input_filename='./input/complaints.csv'
@@ -331,7 +331,7 @@ while not size==0:       # if size of the read chunk is 0, it means we hit the e
     String=left+String_read   
    
     size=len(String_read)
-    print('Location in the file is: ', str((round(File.tell()/100000))/10)+' Mbye')
+    print('Location in the file is: ', str((round(File.tell()/1000))/1000)+' Mbye')
     if not size==0:   
 
         [data,left]=process(String)  # merge the lines to an string,  
@@ -346,25 +346,7 @@ print('Total number of parsed units: ', lines_num)
 print('Pointer location: ',File.tell()/1000000,'Mega bytes')
 print('Done!!!! \n')
 
-print(PIDs,'\n')
-print(CIDs,'\n')
-
-print(OUTPUT[0].year.keys())
-print(OUTPUT[0].year[2019].max)
-
-print(OUTPUT[1].year.keys())
-print(OUTPUT[1].year[2019].max)
-
-print(OUTPUT[1].year.keys())
-print(OUTPUT[1].year[2020].max)
-
 File.close()
-
-
-# In[ ]:
-
-
-
 
 
 # In[ ]:
