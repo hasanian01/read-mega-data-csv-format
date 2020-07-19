@@ -270,7 +270,7 @@ Advanced_search=False   # is true, we assume that the names can slightly vary (f
 ###############################################################
 import sys
 
-run_bash=False
+run_bash=True
 
 if not run_bash:
     input_filename='./input/complaints.csv'
