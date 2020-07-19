@@ -341,5 +341,8 @@ write_report(OUTPUT,output_filename)   # dmup the outputs to a report file
 print('Total number of parsed units: ', lines_num)
 print('Pointer location: ',File.tell()/1000000,'Mega bytes')
 print('Done!!!!')
+print(PIDs)
+print(CIDs)
+print(list(OUTPUT.keys()))
 File.close()
 
