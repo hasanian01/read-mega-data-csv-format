@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[3]:
 
 
 def rounds(a):   # round the number (if less than 0.5 >>> 0 , else +1)
@@ -160,7 +160,7 @@ def process(String):  # this processes the last chunk of data
 def calculate():
     global OUTPUT
     
-    for ID in range(1,len(OUTPUT)):
+    for ID in range(len(OUTPUT)):
         Years=list(OUTPUT[ID].year.keys())
         for y in Years:
             Comps=OUTPUT[ID].year[y].comp
@@ -205,7 +205,7 @@ def removeQ(String):  # removes " from string.  we do not use it in current vers
 ####################################
 
 def PIDs_list_sort(OUTPUT):
-    PIDs_list=list(OUTPUT.keys())[1:]
+    PIDs_list=list(OUTPUT.keys())
     
     Names=[]
     for i in PIDs_list:
@@ -251,7 +251,7 @@ def write_report(OUTPUT,output_filename):
     F.close()  
 
 
-# In[4]:
+# In[7]:
 
 
 #    main code    # 
@@ -294,8 +294,8 @@ for i in Cells:
 
 IDs={}    # complaint IDs
 
-CIDs={'Mostafa Hasanian':0}  # IDs of companies     ID 0 is reserved, we prefered to address the IDs from 1 
-PIDs={'My code':0}           # Product names and IDs ID=0 is reserved
+CIDs={}  # IDs of companies     
+PIDs={}           # Product names 
 
 OUTPUT={}
 class class_output:
@@ -310,11 +310,7 @@ class class_year:
             self.total1=0           # fist output (total complaints)
             self.total2=0           # second output (total companies with at least one complaints)
             self.max=0              # max complaints for a company (percent) = rounds((max/total1)*100)
-            
-OUTPUT[PIDs['My code']]=class_output(PIDs['My code']) 
-OUTPUT[PIDs['My code']].year[2020]=class_year(2020)
-OUTPUT[PIDs['My code']].year[2019]=class_year(2019)
- 
+        
 #####################################
 buffer=100*1000*1000 # number of characters 
 
@@ -327,13 +323,13 @@ while not size==0:       # if size of the read chunk is 0, it means we hit the e
     String=left+String_read   
    
     size=len(String_read)
-    print('Location in the file is: ', str(round(File.tell()/1000000))+' Mbye')
+    print('Location in the file is: ', str((round(File.tell()/100000))/10)+' Mbye')
     if not size==0:   
 
         [data,left]=process(String)  # merge the lines to an string,  
                                      # we may not need the data, but I made it here for future references/ 
         lines_num+=len(data)       
-        if lines_num>100000: break
+        #if lines_num>100000: break
 
 calculate()   # goes through the collected data (OUTPUT) and wraps the numbers 
 write_report(OUTPUT,output_filename)   # dmup the outputs to a report file 
@@ -341,8 +337,17 @@ write_report(OUTPUT,output_filename)   # dmup the outputs to a report file
 print('Total number of parsed units: ', lines_num)
 print('Pointer location: ',File.tell()/1000000,'Mega bytes')
 print('Done!!!!')
-print(PIDs)
-print(CIDs)
-print(list(OUTPUT.keys()))
 File.close()
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
