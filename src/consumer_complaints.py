@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[19]:
 
 
 def rounds(a):   # round the number (if less than 0.5 >>> 0 , else +1)
@@ -178,6 +178,14 @@ def calculate():
 
 ############################  down here, writing the repot   ####################################
 
+def find_name(dic,id):
+    name=''
+    for c in dic:
+        if dic[c]==id:
+            name=c
+            break
+    return name
+
 def pop(S,i):   # remove the char at location i
     S=S[0:i]+S[i+1:]
     return S
@@ -209,7 +217,7 @@ def PIDs_list_sort(OUTPUT):
     
     Names=[]
     for i in PIDs_list:
-        Names.append(list(PIDs)[i])
+        Names.append(find_name(PIDs,i))   
           
     Names_noQ=[]
     j=0
@@ -231,7 +239,7 @@ def write_report(OUTPUT,output_filename):
     IDs_sorted=PIDs_list_sort(OUTPUT)  # we remove " and sort products alphabeticly 
     
     for ID in IDs_sorted:  
-            pro_name=list(PIDs)[ID]
+            pro_name=find_name(PIDs,ID)
             Years=list(OUTPUT[ID].year.keys())
             Years.sort()
             for year in Years:
@@ -251,7 +259,7 @@ def write_report(OUTPUT,output_filename):
     F.close()  
 
 
-# In[7]:
+# In[20]:
 
 
 #    main code    # 
@@ -336,7 +344,20 @@ write_report(OUTPUT,output_filename)   # dmup the outputs to a report file
 
 print('Total number of parsed units: ', lines_num)
 print('Pointer location: ',File.tell()/1000000,'Mega bytes')
-print('Done!!!!')
+print('Done!!!! \n')
+
+print(PIDs,'\n')
+print(CIDs,'\n')
+
+print(OUTPUT[0].year.keys())
+print(OUTPUT[0].year[2019].max)
+
+print(OUTPUT[1].year.keys())
+print(OUTPUT[1].year[2019].max)
+
+print(OUTPUT[1].year.keys())
+print(OUTPUT[1].year[2020].max)
+
 File.close()
 
 
