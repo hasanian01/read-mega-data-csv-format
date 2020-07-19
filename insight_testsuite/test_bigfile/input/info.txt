@@ -1,0 +1,1 @@
+Input file is the original file provided by insight in zip. It was large and not possible to upload 
