@@ -6,9 +6,9 @@
 
 Navigate to directory that run.sh resides.  Make the run.sh file executable and then run it. 
 
-          -   cd /path/to/file
-         -    chmod +x run.sh
-         -    ./run.sh
+-   cd /path/to/file
+-    chmod +x run.sh
+-    ./run.sh
 
                                        **** Actions make the code efficient ****
 Objective: make the code efficient assuming that the data can be much larger than the memory size. 
