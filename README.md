@@ -2,7 +2,7 @@
 
 
 
-****  how to run the code  ****
+                                           ****  how to run the code  ****
 
 Navigate to directory that run.sh resides.  Make the run.sh file executable and then run it. 
 
@@ -27,7 +27,7 @@ The code must be as fast as possible and keeps the minimum amount of data in the
 4- We use a class of object to pour our data in, each object is designated to a certain product. So, if a product does not exist in the data, we make a new object. Using the combinations of objects and dictionary, makes addressing the data easier and searching through the collected info considerably faster. The structure of data is as:
 “Company ID (dictionary)”>>”Years (dictionaries)”>>”Companies IDs: number of complaints” 
 
-**** points and comments on the approach *****
+                                            **** points and comments on the approach *****
 
 1->>>> Short review on the Algorithm:
                 A- Open the file and setup the parameters and variables (define templates for example).
