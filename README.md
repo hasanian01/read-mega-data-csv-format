@@ -1,4 +1,6 @@
-Please read Myapproach.txt to learn about the applied methods. 
+Please read My_approach.txt to learn about the applied methods. 
+
+Your comments and suggestions are very wellcome. 
 
 Mostafa Hasanian
 hasanian.mostafa@gmail.com
