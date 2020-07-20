@@ -19,13 +19,9 @@ The code must be as fast as possible and keeps the minimum amount of data in the
 3- We avoid loops, and instead for searching I devised the following rules: 
        a- I used dictionary as much as I could, so I avoid making duplicates, and it is way faster and easier to look up in data and check if any key already exists. 
        b- Using dictionaries, it is easy to check new key/values and add up new data. How? We use try/except method. Example here, we want to add/update number of complaints against one company:
-       
-Example: 
 
-Try: 
-       dictionary[company]+=1
-Except:
-      dictionary[company]=1
+Try:   dictionary[company]+=1
+Except: dictionary[company]=1   
 
 4- We use a class of object to pour our data in, each object is designated to a certain product. So, if a product does not exist in the data, we make a new object. Using the combinations of objects and dictionary, makes addressing the data easier and searching through the collected info considerably faster. The structure of data is as:
 “Company ID (dictionary)”>>”Years (dictionaries)”>>”Companies IDs: number of complaints” 
