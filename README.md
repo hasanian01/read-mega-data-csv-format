@@ -5,7 +5,7 @@ Here the given code is desgined to review the data collected from complaints of 
 One example of the csv files is given in the input folder. Some tests are given in test folder. 
 
 
-***To run the package, 
+# To run the package, 
   
 Navigate to directory that run.sh resides. Make the run.sh file executable and then run it.
 
